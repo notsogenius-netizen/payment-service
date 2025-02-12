@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: payment-service
+  datasource:
+    url: ${DATABASEURL}
+    username: ${DATABASEUSERNAME}
+    password: ${DATABASEPASSWORD}
+  jpa:
+    database-platform: org.hibernate.dialect.PosgreSQLInnoDBDialect
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+server:
+  port: 8080
