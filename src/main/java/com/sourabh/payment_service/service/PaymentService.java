@@ -16,7 +16,7 @@ public class PaymentService {
     @Autowired
     PaymentRepository paymentRepository;
 
-    public Payment confirmPayment(PaymentDTO paymentDTO){
+    public String confirmPayment(PaymentDTO paymentDTO){
         //check if fare is equal to paid amount.
         if (paymentDTO.getPaidAmount().equals(paymentDTO.getFare())){
             throw new AmountMismatchException("Pay the exact fare:" + paymentDTO.getFare(), HttpStatus.BAD_REQUEST);
@@ -27,6 +27,6 @@ public class PaymentService {
         payment.setOriginStationId(paymentDTO.getOriginStationId());
         payment.setDestinationStationId(paymentDTO.getDestinationStationId());
         paymentRepository.save(payment);
-        return payment;
+        return "Payment is successful";
     }
 }
